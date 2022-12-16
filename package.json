@@ -1,4 +1,6 @@
 {
+  "name": "nodejs-log-example",
+  "version": "0.0.1",
   "dependencies": {
     "koa": "^2.14.1"
   }
