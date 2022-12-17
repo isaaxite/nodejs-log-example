@@ -1,6 +1,6 @@
 {
   "name": "nodejs-log-example",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "dependencies": {
     "dayjs": "^1.11.7",
     "koa": "^2.14.1",
