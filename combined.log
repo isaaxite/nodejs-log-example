@@ -123,3 +123,23 @@
 2022-12-17T01:44:08.231Z [warn]: Hello again distributed logs
 2022-12-17T01:44:09.925Z [warn]: [logger error] [level:info] errMsg:aaaa is not defined
 2022-12-17T01:44:09.925Z [info]: 123, {"age":123444}
+2022-12-17T01:48:02.597Z [warn]: [logger error] [level:error] errMsg:test
+2022-12-17T01:48:02.599Z [info]: Hello again distributed logs
+2022-12-17T01:48:02.600Z [warn]: Hello again distributed logs
+2022-12-17T01:48:04.507Z [warn]: [logger error] [level:info] errMsg:aaa is not defined
+2022-12-17T01:48:04.507Z [info]: 123, {"age":123444}
+2022-12-17T01:49:20.074Z [warn]: [logger error] [level:error] errMsg:test
+2022-12-17T01:49:20.077Z [info]: Hello again distributed logs
+2022-12-17T01:49:20.077Z [warn]: Hello again distributed logs
+2022-12-17T01:49:24.445Z [warn]: [logger error] [level:info] errMsg:aaa is not defined
+2022-12-17T01:49:24.446Z [info]: 123, {"request":{"method":"GET","url":"/","header":{"host":"127.0.0.1:3000","user-agent":"curl/7.64.1","accept":"*/*"}},"response":{"status":404,"message":"Not Found","header":{}},"app":{"subdomainOffset":2,"proxy":false,"env":"development"},"originalUrl":"/","req":"<original node req>","res":"<original node res>","socket":"<original node socket>"}
+2022-12-17T01:59:44.210Z [warn]: [logger error] [level:error] errMsg:test
+2022-12-17T01:59:44.212Z [info]: Hello again distributed logs
+2022-12-17T01:59:44.212Z [warn]: Hello again distributed logs
+2022-12-17T01:59:47.888Z [warn]: [logger error] [level:info] errMsg:aaa is not defined
+2022-12-17T01:59:47.889Z [info]: 123, {"request":{"method":"GET","url":"/","header":{"host":"127.0.0.1:3000","user-agent":"curl/7.64.1","accept":"*/*"}},"response":{"status":404,"message":"Not Found","header":{}},"app":{"subdomainOffset":2,"proxy":false,"env":"development"},"originalUrl":"/","req":"<original node req>","res":"<original node res>","socket":"<original node socket>"}
+2022-12-17T10:06:55+08:00 [warn]: [logger error] [level:error] errMsg:test
+2022-12-17T10:06:55+08:00 [info]: Hello again distributed logs
+2022-12-17T10:06:55+08:00 [warn]: Hello again distributed logs
+2022-12-17T10:07:09+08:00 [warn]: [logger error] [level:info] errMsg:aaa is not defined
+2022-12-17T10:07:09+08:00 [info]: 123, {"request":{"method":"GET","url":"/","header":{"host":"127.0.0.1:3000","user-agent":"curl/7.64.1","accept":"*/*"}},"response":{"status":404,"message":"Not Found","header":{}},"app":{"subdomainOffset":2,"proxy":false,"env":"development"},"originalUrl":"/","req":"<original node req>","res":"<original node res>","socket":"<original node socket>"}

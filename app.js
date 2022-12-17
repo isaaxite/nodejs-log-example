@@ -3,11 +3,8 @@ const safelog = require('./src/utils/log');
 const app = new Koa();
 
 app.use(async ctx => {
-  safelog.info(() => [
-    "123, %j", aaaa
-  ]);
-  safelog.info(
-    "123, %j", { age: 123444 });
+  safelog.info(() => ["123, %j", aaa]);
+  safelog.info("123, %j", ctx);
   ctx.body = 'Hello World';
 });
 

@@ -1,11 +1,11 @@
+const dayjs = require("dayjs")
 const winston = require("winston");
 const { combine, timestamp, printf, splat } = winston.format;
 const logger = winston.createLogger({
   format: combine(
     splat(),
-    timestamp(),
-    printf(({ level, message, timestamp }) => {
-      return `${timestamp} [${level}]: ${message}`;
+    printf(({ level, message }) => {
+      return `${dayjs().format()} [${level}]: ${message}`;
     })
   ),
   transports: [
