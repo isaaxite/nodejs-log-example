@@ -1,6 +1,40 @@
-const dayjs = require("dayjs")
+const path = require("path");
+const dayjs = require("dayjs");
+const fs = require("fs-extra");
 const winston = require("winston");
-const { combine, timestamp, printf, splat } = winston.format;
+const { combine, printf, splat } = winston.format;
+
+const DEV_LOG_DIR = path.resolve(__dirname, '../../logs');
+const PROD_LOG_DIR = path.resolve('/tmp/data');
+
+const getDevTransports = () => {
+  fs.ensureDirSync(DEV_LOG_DIR);
+  return [
+    // 输出到 stdout（控制台）
+    new winston.transports.Console(),
+    // 将日志写入文件
+    new winston.transports.File({ filename: path.join(DEV_LOG_DIR, 'nodejs_log_example.log') })
+  ];
+};
+
+const getProdTransports = () => {
+  fs.ensureDirSync(PROD_LOG_DIR);
+  return [
+    // 将日志写入文件
+    new winston.transports.File({ filename: path.join(PROD_LOG_DIR, 'nodejs_log_example.log') })
+  ];
+};
+
+const getTransports = () => {
+  switch (process.env.NODE_ENV) {
+    case 'development':
+      return getDevTransports();
+    case 'production':
+    default:
+      return getProdTransports();
+  }
+};
+
 const logger = winston.createLogger({
   format: combine(
     splat(),
@@ -8,12 +42,7 @@ const logger = winston.createLogger({
       return `${dayjs().format()} [${level}]: ${message}`;
     })
   ),
-  transports: [
-    // 输出到 stdout（控制台）
-    new winston.transports.Console(),
-    // 将日志写入文件
-    new winston.transports.File({ filename: 'combined.log' })
-  ]
+  transports: getTransports()
 });
 
 const safeloggerFactory = (logger) => {
