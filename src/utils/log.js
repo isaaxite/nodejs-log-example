@@ -2,10 +2,13 @@ const path = require("path");
 const dayjs = require("dayjs");
 const fs = require("fs-extra");
 const winston = require("winston");
-const { combine, printf, splat } = winston.format;
 
+require('winston-daily-rotate-file');
+
+const { combine, printf, splat } = winston.format;
+const LOG_FILENAME = 'nodejs_log_example';
 const DEV_LOG_DIR = path.resolve(__dirname, '../../logs');
-const PROD_LOG_DIR = path.resolve('/tmp/data');
+const PROD_LOG_DIR = path.resolve('/tmp/logs');
 
 const getDevTransports = () => {
   fs.ensureDirSync(DEV_LOG_DIR);
@@ -13,15 +16,22 @@ const getDevTransports = () => {
     // 输出到 stdout（控制台）
     new winston.transports.Console(),
     // 将日志写入文件
-    new winston.transports.File({ filename: path.join(DEV_LOG_DIR, 'nodejs_log_example.log') })
+    new winston.transports.File({ filename: path.join(DEV_LOG_DIR, `${LOG_FILENAME}.log`) })
   ];
 };
 
 const getProdTransports = () => {
   fs.ensureDirSync(PROD_LOG_DIR);
+
+  const filename = path.join(PROD_LOG_DIR, `${LOG_FILENAME}-%DATE%.log`);
+
   return [
-    // 将日志写入文件
-    new winston.transports.File({ filename: path.join(PROD_LOG_DIR, 'nodejs_log_example.log') })
+    new winston.transports.DailyRotateFile({
+      filename,
+      datePattern: 'YYYY-MM-DD-HH',
+      maxSize: '100m',
+      maxFiles: '7d'
+    })
   ];
 };
 
