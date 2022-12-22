@@ -11,7 +11,6 @@ const DEV_LOG_DIR = path.resolve(__dirname, '../../logs');
 const PROD_LOG_DIR = path.resolve('/tmp/logs');
 
 const getDevTransports = () => {
-  fs.ensureDirSync(DEV_LOG_DIR);
   return [
     // 输出到 stdout（控制台）
     new winston.transports.Console(),
@@ -21,8 +20,6 @@ const getDevTransports = () => {
 };
 
 const getProdTransports = () => {
-  fs.ensureDirSync(PROD_LOG_DIR);
-
   const filename = path.join(PROD_LOG_DIR, `${LOG_FILENAME}-%DATE%.log`);
 
   return [
