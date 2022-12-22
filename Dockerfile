@@ -3,6 +3,7 @@ FROM node:16.18.0
 LABEL maintainer="isaacgan"
 LABEL descrition="nodejs_log_example"
 
+ENV NODE_ENV="production"
 WORKDIR /data/svr
 
 COPY . .
